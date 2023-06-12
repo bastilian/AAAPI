@@ -1,10 +1,21 @@
 version: "3.7"
 
 services:
-  # Main Application
   app:
     build: .
-    command: sh -c "npm run dev"
+    env_file: .env
+    command: sh -c "source .env && npm run setup && npm run dev"
+    ports:
+     - 3000:3000
     volumes:
-      - /db
       - .:/app
+      - /app/node_modules
+
+  # This should run the worker process, which will execute all jobs in the queue
+  worker:
+      build: .
+      env_file: .env
+      command: sh -c "echo 'Build me'"
+      volumes:
+        - .:/app
+        - /app/node_modules
