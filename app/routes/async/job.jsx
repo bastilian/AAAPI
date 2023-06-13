@@ -1,6 +1,8 @@
 
 import * as job from '../../models/job.server'
 import * as jobReq from '../../models/job_request.server'
+import { prisma } from '../../db.server';
+
 
 export const loader = async ({request: { body } }) => {
   const newJob = await job.create();
@@ -10,7 +12,7 @@ export const loader = async ({request: { body } }) => {
         url: newJobRequest.url,
       }})
   }
-  return job.findFirst({ where: { id: newJob.id }, include: { jobRequests: true } })
+  return prisma.job.findFirst({ where: { id: newJob.id }, include: { jobRequests: true } })
 };
 
 export const action = loader;
