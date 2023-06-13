@@ -1,5 +1,5 @@
 import { json } from "@remix-run/node";
-import { create } from '../../../app/models/job.server'
+import { create } from '../../models/job.server'
 
 export const loader = async () => {
   // handle "GET" request
