@@ -10,9 +10,9 @@ describe('loader test', () => {
       }
     test('compare the job requests length', async () => {
         const jobsAmount = await prisma.job.findMany()
-        loader({ data: { request :
+        loader({request: {
             body
-        }});
+          }});
         const newJobsAmount = await prisma.job.findMany()
         expect(newJobsAmount.length).toEqual(jobsAmount.length + 1)
     })

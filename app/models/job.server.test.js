@@ -42,7 +42,7 @@ describe('update job', () => {
 describe('create a job with passed params', () => {
   test('getbyid should return the correct result', async () => {
     const newJob = await create();
-    const smth = [
+    const urlsArray = [
       {
         url: 'example.org'
       },
@@ -50,7 +50,7 @@ describe('create a job with passed params', () => {
         url: 'example.org'
       }
     ]
-  for (const jobRequest of smth) {
+  for (const jobRequest of urlsArray) {
     await prisma.jobRequest.create({
       data: {
         jobId: newJob.id,
