@@ -3,7 +3,7 @@ import { prisma } from '../db.server';
 import { create, deleteById, getById, } from './job.server';
 
 describe('getById', () => {
-  beforeEach(async () => {
+  beforeAll(async () => {
     for (const _job of new Array(10)) {
       await prisma.job.create({ data: {} })
     }
