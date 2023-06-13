@@ -22,3 +22,7 @@ export async function deleteById(id) {
 export async function getJobList() {
   return prisma.job.findMany({ where: { id: { not: undefined}}})
 }
+
+export async function updateJobById(id, data = {}) {
+  return prisma.job.update({where: {id}, data})
+}
