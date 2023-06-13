@@ -9,9 +9,9 @@ export const getById = async (id) =>
     })
   )[0];
 
-export async function create(data = {}) {
+export async function create(request = {}) {
   return prisma.job.create({
-    data,
+    request,
   });
 }
 

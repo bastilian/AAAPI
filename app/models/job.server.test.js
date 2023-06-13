@@ -38,3 +38,28 @@ describe('update job', () => {
     expect(await getById(newJob.id).createdAt === '1990-06-13T10:36:18.759Z');
   })
 })
+
+describe('create a job with passed params', () => {
+  test('getbyid should return the correct result', async () => {
+    const newJob = await create();
+    const smth = [
+      {
+        url: 'example.org'
+      },
+      {
+        url: 'example.org'
+      }
+    ]
+  for (const jobRequest of smth) {
+    await prisma.jobRequest.create({
+      data: {
+        jobId: newJob.id,
+        url: jobRequest.url
+      }
+    })
+  }
+
+    expect(await getById(newJob.id)).toBeDefined()
+    expect((await prisma.job.findFirst({ where: { id: newJob.id }, include: { jobRequests: true } })).jobRequests.length).toBe(2)
+  })
+})
