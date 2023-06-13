@@ -1,4 +1,4 @@
-import { prisma } from '~/app/db.server';
+import { prisma } from '../db.server';
 
 export const getId = async (id) =>
   (

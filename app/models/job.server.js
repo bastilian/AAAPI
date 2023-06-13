@@ -18,3 +18,7 @@ export async function create(data = {}) {
 export async function deleteById(id) {
   return prisma.job.delete({ where: { id } });
 }
+
+export async function getJobList() {
+  return prisma.job.findMany({ where: { id: { not: undefined}}})
+}

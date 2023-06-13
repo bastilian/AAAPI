@@ -28,4 +28,3 @@ model JobRequest {
   resultStatus String?
   result       String?
 }
-
