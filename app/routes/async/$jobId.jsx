@@ -1,12 +1,7 @@
-import { useParams } from "@remix-run/react";
+import { json } from "@remix-run/node";
 
-export default function JobId() {
-    const { jobId } = useParams();
-    return (
-        <div>
-            <h2>
-                Dynamic job ID {jobId}
-            </h2>
-        </div>
-    )
-}
+export const loader = async ({params}) => {
+  // handle "GET" request
+  return json(params.jobId);
+};
+
