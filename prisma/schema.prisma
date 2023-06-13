@@ -10,6 +10,7 @@ generator client {
 model Job {
   id String @id @default(cuid())
 
+  status      String       @default("new")
   jobRequests JobRequest[]
 
   createdAt DateTime @default(now())
@@ -20,8 +21,9 @@ model JobRequest {
   id String @id @default(cuid())
 
   job   Job    @relation(fields: [jobId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  jobId String @unique
+  jobId String
 
+  method String?
   url    String
   params String?
 

@@ -1,13 +1,13 @@
-import { prisma } from '~/app/db.server';
+import { prisma } from '../db.server';
 
-export const getId = async (id) =>
-  (
-    await prisma.jobRequest.findMany({
-      where: {
-        id,
-      },
-    })
-  )[0];
+export const getById = async (id) =>
+(
+  await prisma.jobRequest.findFirst({
+    where: {
+      id,
+    },
+  })
+);
 
 export async function create(data) {
   return prisma.jobRequest.create({
