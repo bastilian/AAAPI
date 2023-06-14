@@ -1,21 +1,21 @@
-// import { useParams } from "@remix-run/react";
+import { json } from "@remix-run/node";
+import { getById } from "../../models/job.server";
 
-export const loader = (request)=>  {
+export const loader = async ({ params: { jobId }})=>  {
   //function displays different statuses based of api response
-  const renderSwitch = (param) => {
-    switch (param) {
+  const foundJob = await getById(jobId)
+  const renderSwitch = () => {
+    switch (foundJob.status) {
       case "new":
         return "new status";
       case "done":
-        return "done status ";
-      default:
-        return "pending status";
+        return "done status";
+      case "pending":
+        return "pending status"
+        default:
+        return "Unable to fetch status";
     }
   };
-  //will use this useParams to pass the jobId to the api
-  //   const params = useParams();
-  return (
-    //Eventually this param will be from the api call
-    <div>{renderSwitch("new")}</div>
-  );
+  let results =  json({ "statusKey": renderSwitch()})
+  return results
 }
