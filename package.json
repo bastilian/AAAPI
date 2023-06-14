@@ -4,7 +4,9 @@
   "sideEffects": false,
   "scripts": {
     "build": "remix build",
-    "dev": "cross-env NODE_ENV=development binode --require ./mocks -- @remix-run/dev:remix dev",
+    "dev": "run-p dev:*",
+    "dev:remix": "NODE_ENV=development npx remix watch",
+    "dev:express": "NODE_ENV=development node ./server.js",
     "format": "prettier --write .",
     "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
     "setup": "prisma generate && prisma migrate deploy && prisma db seed",
@@ -26,14 +28,17 @@
   "dependencies": {
     "@prisma/client": "^4.12.0",
     "@remix-run/css-bundle": "^1.17.0",
+    "@remix-run/express": "^1.17.0",
     "@remix-run/node": "^1.17.0",
     "@remix-run/react": "^1.17.0",
     "@remix-run/serve": "^1.17.0",
     "bcryptjs": "^2.4.3",
+    "express": "^4.18.2",
     "isbot": "^3.6.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tiny-invariant": "^1.3.1"
+    "tiny-invariant": "^1.3.1",
+    "ws": "^8.13.0"
   },
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",
