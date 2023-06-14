@@ -1,6 +1,6 @@
 import { prisma } from '../db.server';
 
-export const getById = async (id) =>
+export const getJobRequestById = async (id) =>
 (
   await prisma.jobRequest.findFirst({
     where: {

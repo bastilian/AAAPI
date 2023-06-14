@@ -1,6 +1,6 @@
 import { prisma } from '../db.server';
 
-export const getById = async (id) =>
+export const getJobById = async (id) =>
   (
     await prisma.job.findMany({
       where: {
