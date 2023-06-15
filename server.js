@@ -1,8 +1,8 @@
-const remix = require("@remix-run/express");
-const enableWs = require("express-ws");
-const express = require("express");
-const { getJobById } = require("./app/models/job.server");
-
+import remix from "@remix-run/express";
+import enableWs from "express-ws";
+import express from "express";
+import { getJobById } from "./app/models/job.server.js";
+import * as build from "./build/index.cjs";
 const app = express();
 enableWs(app); // helps to route ws the express way
 
@@ -10,7 +10,6 @@ app.use(express.static("public", { maxAge: "1h" }));
 
 app.ws("/job/:jobId", (ws, req) => {
   // TODO: check that request has existing job id
-
   console.log(getJobById(req.params.jobId));
   ws.on("message", (msg) => {
     ws.send(msg);
@@ -21,7 +20,7 @@ app.ws("/job/:jobId", (ws, req) => {
   });
 });
 
-app.all("*", remix.createRequestHandler({ build: require("./build") }));
+app.all("*", remix.createRequestHandler({ build }));
 
 app.listen(process.env.PORT || 3000, () => {
   console.log(

@@ -1,6 +1,7 @@
 {
   "name": "aaapi",
   "private": true,
+  "type": "module",
   "sideEffects": false,
   "scripts": {
     "build": "remix build",
