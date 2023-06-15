@@ -1,6 +1,6 @@
-import { prisma } from '../db.server';
+import { prisma } from "../db.server.js";
 
-export const getById = async (id) =>
+export const getJobById = async (id) =>
   (
     await prisma.job.findMany({
       where: {
@@ -20,9 +20,9 @@ export async function deleteById(id) {
 }
 
 export async function getJobList() {
-  return prisma.job.findMany({ where: { id: { not: undefined}}})
+  return prisma.job.findMany({ where: { id: { not: undefined } } });
 }
 
 export async function updateJobById(id, data = {}) {
-  return prisma.job.update({where: {id}, data})
+  return prisma.job.update({ where: { id }, data });
 }
