@@ -33,6 +33,7 @@
     "@remix-run/node": "^1.17.0",
     "@remix-run/react": "^1.17.0",
     "@remix-run/serve": "^1.17.0",
+    "axios": "^1.4.0",
     "bcryptjs": "^2.4.3",
     "express": "^4.18.2",
     "express-ws": "^5.0.2",
