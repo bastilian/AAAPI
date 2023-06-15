@@ -12,8 +12,6 @@ export const loader = async ({ params: { jobId }})=>  {
         return "done status";
       case "pending":
         return "pending status"
-        default:
-        return "Unable to fetch status";
     }
   };
   let results =  json({ "statusKey": renderSwitch()})
