@@ -25,7 +25,7 @@ describe('Returns proper status based off jobs current attribute', () => {
       statusKey: 'pending status'
     })
   })
-
+ 
   test('should return status of done', async () => {
     const newJob = await create();
     const doneJob = await updateJobById(newJob.id, { status: 'done'});
